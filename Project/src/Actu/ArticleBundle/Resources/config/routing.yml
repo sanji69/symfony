@@ -4,4 +4,16 @@ actu_article_homepage:
 
 actu_article_add:
     path:   /add
-    defaults: { _controller: ActuArticleBundle:Default:index }
+    defaults: { _controller: ActuArticleBundle:Default:create }
+
+actu_article_delete:
+    path:   /delete
+    defaults: { _controller: ActuArticleBundle:Default:delete }
+
+actu_article_retrive:
+    path:   /retrive
+    defaults: { _controller: ActuArticleBundle:Default:retrive }
+
+actu_article_update:
+    path:   /update
+    defaults: { _controller: ActuArticleBundle:Default:update }
