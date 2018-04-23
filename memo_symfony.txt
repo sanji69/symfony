@@ -1,0 +1,68 @@
+    User    |	--|										|    User
+	 |      |	 -|--->>Angular 										|     |
+ Interface  |	--|										|   F.End
+     |      |											|     |
+	API     |  ---| 									|   B.End
+	 |      |     |   									|     |
+  Back.End  | 	  |---->> PHP Symfony					|    BDD
+     |      |	  |		Fonctionnement Symfony 4		|
+    BDD     |  ---|		 Architecture micro service		|  Model MVC
+
+
+ ~ == null en yml
+ # == comment en yml
+
+##___________________________________________
+## Installation
+##___________________________________________
+
+# Symfony 3
+symfony new nom_du_projet 3.4
+
+# Symfony 2
+symfony new nom_du_projet 2.8
+
+# Symfony 4
+composer create-project symfony/website-skeleton my_project
+mposer create-project symfony/skeleton my_project
+
+##__________________________________________
+## Serveur
+##__________________________________________
+
+# Démarer le Serveur
+php bin/consol server:start
+php bin/consol server:start localhost:8000
+
+# Arreter le Serveur
+php bin/consol server:stop
+
+# Etats du Serveur
+php bin/consol server:status
+
+##___________________________________________
+## Maj de la config symfony
+##___________________________________________
+
+# 1 - Modifier app/config/parameters.yml.dist
+# 2 - Exécuter la commande :
+composer update
+
+# Renouvellement de l'autoloader
+composer dump-autoload
+
+##___________________________________________
+## Générer un Bundle
+##___________________________________________
+
+php bin/console generate:bundle
+
+##___________________________________________
+## Base de données / Doctrine
+##___________________________________________
+
+# - Créer la base de données
+php bin/console doctrine:database:create
+
+# - Supprimer une base de données
+php bin/console doctrine:database:drop
