@@ -48,6 +48,9 @@ php bin/consol server:status
 # 2 - Exécuter la commande :
 composer update
 
+# Générer un nouveau token secret
+allez sur SHA1.com et récupérer la chaine pour la mettre dans le terminal
+
 # Renouvellement de l'autoloader
 composer dump-autoload
 
@@ -56,6 +59,20 @@ composer dump-autoload
 ##___________________________________________
 
 php bin/console generate:bundle
+
+# supprimer un Bundle
+supprimer le repertoir du bundle dans le répertoir src
+supprimer la ligne d'appel du bundle dans AppKernel.php
+supprimer la route dans routing.yml
+supprimer les lignes AppBundle dans services.yml
+
+##___________________________________________
+## Gestion des caches
+##___________________________________________
+
+# Nétoyer les caches
+php bin/console cache:clear --env=dev
+-chmod -R 0777 var/cache/*
 
 ##___________________________________________
 ## Base de données / Doctrine
