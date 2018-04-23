@@ -1,0 +1,7 @@
+actu_article_homepage:
+    path:     /
+    defaults: { _controller: ActuArticleBundle:Default:index }
+
+actu_article_add:
+    path:   /add
+    defaults: { _controller: ActuArticleBundle:Default:index }
