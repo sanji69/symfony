@@ -2,6 +2,13 @@
 {% extends 'form.html.twig' %}
 
 {% block content %}
+    <h2>Création d'un article</h2>
+
+    {{ form_start(MyForm) }}
+    {{ form_error(MyForm) }}
+    {{ form_rest(MyForm) }}
+    {{ form_end(MyForm) }}
+    
 {% endblock %}
 
 {% block stylesheets %}

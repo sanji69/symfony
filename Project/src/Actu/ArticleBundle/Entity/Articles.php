@@ -49,6 +49,14 @@ class Articles
      */
     private $datePublish;
 
+    /**
+      * Contructeur
+      */
+
+    public function __construct()
+    {
+        $this->dateRedac = new \DateTime();
+    }
 
     /**
      * Get id.
