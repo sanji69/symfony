@@ -31,14 +31,14 @@ mposer create-project symfony/skeleton my_project
 ##__________________________________________
 
 # Démarer le Serveur
-php bin/consol server:start
-php bin/consol server:start localhost:8000
+php bin/console server:start
+php bin/console server:start localhost:8000
 
 # Arreter le Serveur
-php bin/consol server:stop
+php bin/console server:stop
 
 # Etats du Serveur
-php bin/consol server:status
+php bin/console server:status
 
 ##___________________________________________
 ## Maj de la config symfony
@@ -83,3 +83,10 @@ php bin/console doctrine:database:create
 
 # - Supprimer une base de données
 php bin/console doctrine:database:drop
+
+# - Generer une entité
+php bin/console generate:doctrine:entity
+
+# - Générer getter/setter
+php bin/console generate:doctrine:entities
+php bin/console generate:doctrine:entities NomDuBundle
