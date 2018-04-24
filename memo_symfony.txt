@@ -88,5 +88,4 @@ php bin/console doctrine:database:drop
 php bin/console generate:doctrine:entity
 
 # - Générer getter/setter
-php bin/console generate:doctrine:entities
-php bin/console generate:doctrine:entities NomDuBundle
+php bin/console doctrine:generate:entities NomDuBundle
