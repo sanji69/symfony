@@ -10,37 +10,53 @@ use Actu\ArticleBundle\Form\Type\ArticlesType;
 
 class DefaultController extends Controller
 {
+    /**
+     * Liste des articles
+     */
     public function indexAction()
     {
         return $this->render('@ActuArticle/Default/index.html.twig');
     }
 
+    /**
+     * Création d'un article
+     */
     public function createAction()
     {
-        // instance de l'entité
+        // Instance de l'entité
         $articles = new Articles;
 
-        // Création du formulaire a partir du FormType et basé sur l'entité
+        // Création du formulaire à partire du FormType et basé sur l'entité
         $form = $this->createForm(ArticlesType::class, $articles);
 
-        //Génération  de la vue du formulaire
+        // Génération de la vue du formulaire
         $form = $form->createView();
 
-        return $this->render('@ActuArticle/Default/create.html.twig', [
-            "Myform"->$form;
+        // Envois du formulaire au fichier de vu
+        return $this->render('@ActuArticle/Default/create.html.twig',[
+            "form" => $form
         ]);
     }
 
-    public function retriveAction()
+    /**
+     * Lecture d'un article
+     */
+    public function retrieveAction()
     {
-        return $this->render('@ActuArticle/Default/retrive.html.twig');
+        return $this->render('@ActuArticle/Default/retrieve.html.twig');
     }
 
+    /**
+     * MAJ d'un article
+     */
     public function updateAction()
     {
         return $this->render('@ActuArticle/Default/update.html.twig');
     }
 
+    /**
+     * Suppression d'un article
+     */
     public function deleteAction()
     {
         return $this->render('@ActuArticle/Default/delete.html.twig');

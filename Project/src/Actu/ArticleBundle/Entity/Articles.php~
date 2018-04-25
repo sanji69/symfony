@@ -1,0 +1,58 @@
+<?php
+
+namespace Actu\ArticleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Articles
+ *
+ * @ORM\Table(name="articles")
+ * @ORM\Entity(repositoryClass="Actu\ArticleBundle\Repository\ArticlesRepository")
+ */
+class Articles
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="abstract", type="text")
+     */
+    private $abstract;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
+     * @var datetime_immutable
+     *
+     * @ORM\Column(name="date_redac", type="datetime_immutable")
+     */
+    private $dateRedac;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_publish", type="datetime", nullable=true)
+     */
+    private $datePublish;
+}

@@ -31,14 +31,21 @@ class Articles
     /**
      * @var string
      *
+     * @ORM\Column(name="abstract", type="text", nullable=true)
+     */
+    private $abstract;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
-     * @var \DateTime
+     * @var datetime_immutable
      *
-     * @ORM\Column(name="date_redac", type="datetime")
+     * @ORM\Column(name="date_redac", type="datetime_immutable")
      */
     private $dateRedac;
 
@@ -49,14 +56,20 @@ class Articles
      */
     private $datePublish;
 
-    /**
-      * Contructeur
-      */
+
+    /*
+     * Constructeur
+     */
 
     public function __construct()
     {
         $this->dateRedac = new \DateTime();
     }
+
+
+    /*
+     * Getter / Setter
+     */
 
     /**
      * Get id.
@@ -93,6 +106,30 @@ class Articles
     }
 
     /**
+     * Set abstract.
+     *
+     * @param string $abstract
+     *
+     * @return Articles
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
+
+        return $this;
+    }
+
+    /**
+     * Get abstract.
+     *
+     * @return string
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
+    }
+
+    /**
      * Set content.
      *
      * @param string $content
@@ -119,7 +156,7 @@ class Articles
     /**
      * Set dateRedac.
      *
-     * @param \DateTime $dateRedac
+     * @param datetime_immutable $dateRedac
      *
      * @return Articles
      */
@@ -133,7 +170,7 @@ class Articles
     /**
      * Get dateRedac.
      *
-     * @return \DateTime
+     * @return datetime_immutable
      */
     public function getDateRedac()
     {
