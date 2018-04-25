@@ -21,13 +21,34 @@ class DefaultController extends Controller
     /**
      * Création d'un article
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         // Instance de l'entité
         $articles = new Articles;
 
         // Création du formulaire à partire du FormType et basé sur l'entité
         $form = $this->createForm(ArticlesType::class, $articles);
+
+        // Récupération des donéee du formulaire
+        if($form->handleRequest($request)->isSubmitted())
+        {
+            //Appel de l'Entity Manager
+            $em = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+
+            //les données du formulaire "$form" sont automatiquement associées a l'entité "$articles"
+
+            //Ajoute les donnée de l'entité dans la mémoire de l'entity Manager
+            $em->persist($articles);
+
+            //enregistre les données en BDD et on vide la mémoire de l'entityManager
+            $em->flush();
+
+            //redirection
+            return $this->redirectToRoute("actu_article_retrieve", [
+                "id"=>$articles->getID('id')
+            ]);
+        }
 
         // Génération de la vue du formulaire
         $form = $form->createView();

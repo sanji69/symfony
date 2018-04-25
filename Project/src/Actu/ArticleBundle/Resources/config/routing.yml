@@ -7,8 +7,12 @@ actu_article_add:
     defaults: { _controller: ActuArticleBundle:Default:create }
 
 actu_article_retrieve:
-    path:     /retrieve
-    defaults: { _controller: ActuArticleBundle:Default:retrieve }
+    path:     /retrieve/{id}
+    defaults:
+         _controller: ActuArticleBundle:Default:retrieve
+    requirements:
+        _methode: GET
+        id: \d+
 
 actu_article_update:
     path:     /update

@@ -3,6 +3,8 @@
 namespace Actu\ArticleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Cocur\Slugify\Slugify;
 
 /**
  * Articles
@@ -20,6 +22,15 @@ class Articles
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=100, unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
+
 
     /**
      * @var string
@@ -43,9 +54,9 @@ class Articles
     private $content;
 
     /**
-     * @var datetime_immutable
+     * @var datetime
      *
-     * @ORM\Column(name="date_redac", type="datetime_immutable")
+     * @ORM\Column(name="date_redac", type="datetime")
      */
     private $dateRedac;
 
@@ -91,6 +102,8 @@ class Articles
     public function setTitle($title)
     {
         $this->title = $title;
+        $slugify = new Slugify();
+        $this->slug = $slugify->slugify($this->title);
 
         return $this;
     }
