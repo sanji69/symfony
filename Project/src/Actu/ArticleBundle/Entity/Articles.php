@@ -213,4 +213,28 @@ class Articles
     {
         return $this->datePublish;
     }
+
+    /**
+     * Set slug.
+     *
+     * @param string $slug
+     *
+     * @return Articles
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

@@ -46,6 +46,7 @@ class DefaultController extends Controller
 
             //redirection
             return $this->redirectToRoute("actu_article_retrieve", [
+                "slug"=>$articles->getSlug('slug'),
                 "id"=>$articles->getID('id')
             ]);
         }
