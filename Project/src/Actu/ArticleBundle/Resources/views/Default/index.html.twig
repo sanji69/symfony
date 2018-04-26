@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h2>Liste des articles</h2>
+    <h2>Liste des articles</h2>
 
+    {% for article in articles %}
+        <div>
+            <h2>{{ article.title }}</h2>
+            <time>{{article.dateRedac | date('Y-m-d')}}</time>
+            <div>{{ article.content }}</div>
+            <a href="{{ path('actu_article_retrieve', {
+                "slug":article.slug,
+                "id":article.id
+            })}}">Lire l'article</a>
+        </div>
+    {% endfor %}
 {% endblock body %}

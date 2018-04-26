@@ -2,5 +2,12 @@
 
 {% block body %}
 <h2>Lecture d'un article</h2>
-
+    <div>
+        <h2>{{ article.title }}</h2>
+        <time>{{article.dateRedac | date('Y-m-d')}}</time>
+        <div>{{ article.content }}</div>
+        <a href="{{ path('actu_article_update', {
+            "id":article.id
+        }) }}">Modifier l'article</a>
+    </div>
 {% endblock body %}

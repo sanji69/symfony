@@ -15,7 +15,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@ActuArticle/Default/index.html.twig');
+        //Appel de l'Entity Manager
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em
+            ->getRepository('ActuArticleBundle:Articles')
+            ->findAll();
+
+        return $this->render('@ActuArticle/Default/index.html.twig', [
+            "articles" => $articles
+        ]);
     }
 
     /**
@@ -63,17 +72,49 @@ class DefaultController extends Controller
     /**
      * Lecture d'un article
      */
-    public function retrieveAction()
+    public function retrieveAction($slug, $id)
     {
-        return $this->render('@ActuArticle/Default/retrieve.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $em
+            ->getRepository('ActuArticleBundle:Articles')
+            ->find($id);
+
+        return $this->render('@ActuArticle/Default/retrieve.html.twig',
+            ["article" => $article]
+        );
     }
 
     /**
      * MAJ d'un article
      */
-    public function updateAction()
+    public function updateAction(request $request, $id)
     {
-        return $this->render('@ActuArticle/Default/update.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $article = $em
+            ->getRepository('ActuArticleBundle:Articles')
+            ->find($id);
+
+        $form = $this->createForm(ArticlesType::class, $article);
+
+
+        if($form->handleRequest($request)->isSubmitted())
+        {
+            $data = $form->getData();
+
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute("actu_article_retrieve", [
+                "slug"=>$article->getSlug('slug'),
+                "id"=>$article->getID('id')
+            ]);
+        }
+
+        $form = $form->createView();
+        return $this->render('@ActuArticle/Default/update.html.twig',
+            ["form" => $form]
+        );
     }
 
     /**
