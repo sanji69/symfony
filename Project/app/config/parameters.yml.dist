@@ -2,6 +2,8 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+    app_title: Rouen Actu - Toute l'actu de Rouen
+    app_base: RouenActu.fr
     database_host: 127.0.0.1
     database_port: ~
     database_name: symfony
@@ -14,6 +16,9 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: ~
     mailer_password: ~
+
+    mailer_sender_name: %app_base% Team
+    mailer_sender_address: noreply%app_base%
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

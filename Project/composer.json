@@ -6,7 +6,8 @@
         "psr-4": {
             "HomeBundle\\": "src/HomeBundle",
             "Actu\\ArticleBundle\\": "src/Actu/ArticleBundle",
-            "Actu\\CategoryBundle\\": "src/Actu/CategoryBundle"
+            "Actu\\CategoryBundle\\": "src/Actu/CategoryBundle",
+            "User\\UserBundle\\": "src/User/UserBundle"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -35,8 +36,9 @@
         "twig/twig": "^1.0||^2.0",
 
         "doctrine/doctrine-fixtures-bundle": "^3.0.2",
-        "cocur/slugify": "^v3.1",
-        "gedmo/doctrine-extensions": "^2.4"
+        "cocur/slugify": "^3.1",
+        "gedmo/doctrine-extensions": "^2.4",
+        "friendsofsymfony/user-bundle": "^2.1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
